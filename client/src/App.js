@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import ChatPage from "./components/pages/ChatPage";
 
 // client connects to server that is on port 3001
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://neobrutalistic-chat-app.herokuapp.com/");
 
 function App() {
   const [username, setUsername] = useState("");
