@@ -4,7 +4,6 @@ import Home from "./components/pages/Home";
 import { useState } from "react";
 import { io } from "socket.io-client";
 import ChatPage from "./components/pages/ChatPage";
-import { useEffect } from "react";
 
 // client connects to server that is on port 3001
 const socket = io.connect("http://localhost:3001");
