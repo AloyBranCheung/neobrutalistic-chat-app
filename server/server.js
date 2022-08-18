@@ -11,9 +11,6 @@ import leaveRoom from "./services/leaveRoom.js";
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// add cors middleware
-app.use(cors());
-
 // mongoose connect
 const connectMongoose = async () => {
   try {
@@ -39,10 +36,13 @@ let allUsers = []; // all users in the current chat room
 // Create an io server and allow for CORS from http://localhost:3000 with GET and POST methods
 const io = new Server(server, {
   cors: {
-    origin: "https://neobrutalistic-chat-app.herokuapp.com/",
+    origin: "https://silly-narwhal-3281d0.netlify.app/",
     methods: ["GET", "POST"],
   },
 });
+
+// add cors middleware
+app.use(cors());
 // Listen for when the client connects via socket.io-client
 io.on("connection", (socket) => {
   console.log(`User is connected ${socket.id}`);
