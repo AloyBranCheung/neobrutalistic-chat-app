@@ -13,7 +13,12 @@ export default function SendMessage({ socket, username, room }) {
     if (message !== "" || message.length !== 0) {
       const __createdtime__ = Date.now();
       // send message to server for server to broadcast to everyone else
-      socket.emit("send_message", { username, room, message, __createdtime__ });
+      socket.emit("send_message", {
+        username,
+        room,
+        message,
+        __createdtime__,
+      });
     }
     setMessage("");
   };
