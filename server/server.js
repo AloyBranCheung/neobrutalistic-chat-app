@@ -36,7 +36,7 @@ let allUsers = []; // all users in the current chat room
 // Create an io server and allow for CORS from http://localhost:3000 with GET and POST methods
 const io = new Server(server, {
   cors: {
-    origin: "https://silly-narwhal-3281d0.netlify.app/",
+    origin: process.env.CLIENT_URL,
     methods: ["GET", "POST"],
   },
 });

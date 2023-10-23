@@ -6,13 +6,15 @@ import { io } from "socket.io-client";
 import ChatPage from "./components/pages/ChatPage";
 
 // client connects to server that is on port 3001
-const socket = io.connect("https://neobrutalistic-chat-app.herokuapp.com/", {
+const socket = io.connect(process.env.REACT_APP_SERVER_URL, {
   transports: ["websocket"],
 });
 
 function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
+
+  console.log(process.env.SERVER_UR);
 
   return (
     <BrowserRouter>
