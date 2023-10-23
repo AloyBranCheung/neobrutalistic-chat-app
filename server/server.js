@@ -3,12 +3,14 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 import { Server } from "socket.io";
+import Filter from "bad-words";
 import mongoose from "mongoose";
 import Message from "./model/Message.js";
 import getMessages from "./services/getMessages.js";
 import leaveRoom from "./services/leaveRoom.js";
 
 const app = express();
+const filter = new Filter();
 const PORT = process.env.PORT || 3001;
 
 // mongoose connect
@@ -89,6 +91,7 @@ io.on("connection", (socket) => {
 
     // listen for send_message event
     socket.on("send_message", async (data) => {
+      data.message = filter.clean(data.message);
       const { username, room, message, __createdtime__ } = data;
       //sends to all users in room including sender
       io.in(room).emit("receive_message", data);

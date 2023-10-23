@@ -14,8 +14,6 @@ function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
 
-  console.log(process.env.SERVER_UR);
-
   return (
     <BrowserRouter>
       <Routes>
