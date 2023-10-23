@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ room, socket, username }) {
-  const [roomUsers, setRoomUsers] = useState([]);
+  const [roomUsers, setRoomUsers] = useState([
+    {
+      id: "Loading...",
+      username: "Loading... server is free hosted so first load takes a while.",
+    },
+  ]);
   const navigate = useNavigate();
 
   // get list of users in chat room

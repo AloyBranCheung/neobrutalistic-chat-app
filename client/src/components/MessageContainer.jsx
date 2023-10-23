@@ -4,7 +4,13 @@ import TextMessage from "./TextMessage";
 import { v4 as uuidv4 } from "uuid";
 
 export default function MessageContainer({ socket, username, room }) {
-  const [messagesReceived, setMessagesReceived] = useState([]);
+  const [messagesReceived, setMessagesReceived] = useState([
+    {
+      message: "Loading... server is free hosted so first load takes a while.",
+      username: "Chat_Bot",
+      __createdtime__: Date.now(),
+    },
+  ]);
   const msgColRef = useRef(null);
 
   const formatDateFromTimestamp = (timestamp) => {
